@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <title>Covid Monitor</title>
+
+        <script src="https://kit.fontawesome.com/9ac85f9e73.js" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    </head>
+    <body>
+        <div class="queries-commands-wrapper">
+            <form action="{{ url_for('main.find_person_emergency_contact') }}" method="POST" role="form">
+                Find a person's emergency contact
+                <div class="flex-item">
+                    <input name="person-name" type="text" placeholder="person name">
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+
+            <form action="{{ url_for('main.vaccination_percentage') }}" method="POST" role="form">
+                Percentage of people based on vaccine brand
+                <div class="flex-item">
+                    Vaccine brand:
+                    <select name="vaccine-brand">
+                        <option value="All">All</option>
+                        <option value="Astrazeneca">AstraZeneca</option>
+                        <option value="COVIran Barkat">COVIran Barkat</option>
+                        <option value="J&J">Johnson & Johnson</option>
+                        <option value="Pfizer">Pfizer</option>
+                        <option value="Razi Cov Pars">Razi Cov Pars</option>
+                    </select>
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+
+            <form action="{{ url_for('main.authorized_body_type_count') }}" method="POST" role="form">
+                Get the number of each types of authorized bodies
+                <div class="flex-item">
+                    Type of authorized body:
+                    <select name="authorized-body-type">
+                        <option value="Hospital">Hospital</option>
+                        <option value="Laboratory">Laboratory</option>
+                    </select>
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+            
+            <form action="{{ url_for('main.list_of_vaccinations_per_authorized_body') }}" method="POST" role="form">
+                Get the list of people vaccinated through each authorized body
+                <div class="flex-item">
+                    Name of authorized body:
+                    <select name="authorized-body-name">
+                        <option value="Milano Hospital">Milano Hospital</option>
+                        <option value="Turin Hospital">Turin Hospital</option>
+                        <option value="Lecco Hospital">Lecco Hospital</option>
+                        <option value="Como Laboratory">Como Laboratory</option>
+                    </select>
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+            
+            <form action="{{ url_for('main.check_vaccine_validity') }}" method="POST" role="form">
+                Check the vaccination status of a person
+                <div class="flex-item">
+                    <input name="person-name" type="text" placeholder="person name" />
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+
+            <form action="{{ url_for('main.add_person') }}" method="POST" role="form">
+                <div class="flex-item">
+                    Add new person to the database
+                    <input name="person-name" type="text" placeholder="name">
+                    <input name="phone-number" type="text" pattern="[0-9]+" placeholder="phone number">
+                    <div style="border: 1px solid black; margin: 1px 1px">
+                        Emergency contact info:
+                        <input name="emergency-contact-name" type="text" placeholder="name">
+                        <input name="emergency-contact-phone-number" type="text" pattern="[0-9]+" placeholder="phone number">
+                    </div>
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+
+            <form action="{{ url_for('main.add_vaccine_record') }}" method="POST" role="form">
+                <div class="flex-item">
+                    Add a vaccine record for a person
+                    <input name="person-name" type="text" placeholder="name">
+                    <input name="vaccination-place" type="text" placeholder="vaccination place">
+                    <select name="vaccine-brand">
+                        <option value="Astrazeneca">Astrazeneca</option>
+                        <option value="COVIran Barkat">COVIran Barkat</option>
+                        <option value="J&J">Johnson & Johnson</option>
+                        <option value="Pfizer">Pfizer</option>
+                        <option value="Razi Cov Pars">Razi Cov Pars</option>
+                    </select>
+                    <select name="authorized-body-name">
+                        <option value="Milano Hospital">Milano Hospital</option>
+                        <option value="Turin Hospital">Turin Hospital</option>
+                        <option value="Lecco Hospital">Lecco Hospital</option>
+                        <option value="Como Laboratory">Como Laboratory</option>
+                    </select>
+                    <input name="vaccine-type" type="text" placeholder="type">
+                    <input name="vaccine-lot" type="text" placeholder="lot">
+                    <span>Production date:</span>
+                    <input name="production-date" type="date">
+                    <span>Injection date:</span>
+                    <input name="injection-date" type="date">
+                    <input name="injecting-nurse-doctor" type="text" placeholder="injecting nurse/doctor">
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+            
+            <form action="{{ url_for('main.add_test_record') }}" method="POST" role="form">
+                <div class="flex-item">
+                    Add a test result for a person
+                    <input name="person-name" type="text" placeholder="name">
+                    <input name="test-place" type="text" placeholder="testing place" />
+                    <span>Test result:</span>
+                    <span>
+                        <input name="test-result" type="radio" value="Neg" checked>
+                        <label>Negavite</label>
+                    </span>
+                    <span>
+                    <input name="test-result" type="radio" value="Pos">
+                    <label>Positive</label>
+                    </span>
+                    <span>Test date:</span>
+                    <input name="test-date" type="date">
+                    <input name="doctor-nurse-name" type="text" placeholder="doctor/nurse">
+                </div>
+                <button type="submit" class="flex-item">Execute</button>
+            </form>
+        </div>
+
+        <div class="results-wrapper">
+            {{ data|safe }}
+        </div>
+    </body>
+</html>

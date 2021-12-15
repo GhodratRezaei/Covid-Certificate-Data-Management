@@ -1,0 +1,2 @@
+FLASK_APP=covidapp
+FLASK_ENV=development

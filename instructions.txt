@@ -1,0 +1,7 @@
+It is recommended to do everything in a virtual environment
+
+1. run `pip install -r requirements` to install all necessary libraries
+2. Navigate to the covidapp folder
+3. Add the connection string to 'connection_string.txt'
+4. Run `flask run` in the command line
+5. The service should be running on port 5000

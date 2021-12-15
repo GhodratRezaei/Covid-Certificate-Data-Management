@@ -1,0 +1,1 @@
+mongodb+srv://SMBUD:Qwer_1234@cluster0.mdv7s.mongodb.net/LastBig?retryWrites=true&w=majority

@@ -1,0 +1,58 @@
+html {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+}
+.queries-commands-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+.queries-commands-wrapper form, .queries-commands-wrapper div {
+    display: flex;
+    flex-direction: column;
+    background: #929292;
+    padding: 5px 5px;
+    margin: 5px 5px;
+    border-radius: 10px;
+}
+.queries-commands-wrapper div {
+    height: 100%;
+}
+.queries-commands-wrapper form ul {
+    height: 100%;
+    list-style: none;
+    width: 100%;
+}
+.queries-commands-wrapper form .flex-item {
+    margin: 2px 7px;
+}
+.queries-commands-wrapper form .flex-item input, select{
+    border: none;
+    padding: 8px 20px;
+    margin: 2px 7px;
+}
+.queries-commands-wrapper form button {
+    padding: 8px 10px;
+    margin: 5px 7px;
+    border: none;
+    border-radius: 10px;
+}
+.results-wrapper {
+
+    margin-left: auto;
+    margin-right: auto;
+}
+table {
+    border-collapse: collapse;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+  }
